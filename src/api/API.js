@@ -24,6 +24,7 @@ export const useAPI = () => {
   }, []);
 
   const getUsersList = useCallback(async () => {
+    console.log("Get User Lists");
     await axiosPrivate
       .get("listUsers")
       .then((response) => {
@@ -51,7 +52,6 @@ export const useAPI = () => {
   }, []);
 
   const setUnFollowUser = useCallback(async (id) => {
-    console.log(id);
     await axiosPrivate
       .delete("unFollowUser", { data: { id: id } })
       .then((response) => {
@@ -64,12 +64,12 @@ export const useAPI = () => {
 
   const setFollowUser = useCallback(async (id) => {
     await axiosPrivate
-      .post("followUser", { data: { id: id } })
+      .post("followUser", { id: id })
       .then((response) => {
         console.log(response.data);
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response);
       });
   }, []);
 

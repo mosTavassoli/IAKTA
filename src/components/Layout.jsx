@@ -1,9 +1,10 @@
 import { Outlet } from "react-router-dom";
+import { MainContainer } from "../styles/GlobalStyles";
 
 export const Layout = () => {
   return (
-    <main className="App">
+    <MainContainer>
       <Outlet />
-    </main>
+    </MainContainer>
   );
 };
