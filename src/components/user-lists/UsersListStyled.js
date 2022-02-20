@@ -12,7 +12,6 @@ export const UserListsMainContainer = styled.section`
 `;
 
 export const UserListContainer = styled.section`
-  /* width: 40%; */
   box-shadow: 1px 2px 3px rgba(255, 255, 255, 0.8);
   background-color: darkcyan;
   padding: 1rem;
