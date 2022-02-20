@@ -89,7 +89,7 @@ const Register = () => {
         <RegisterContainer>
           <h1>Success!</h1>
           <p>
-            <a href="#">Sign In</a>
+            <a href="/login">Sign In</a>
           </p>
         </RegisterContainer>
       ) : (
@@ -169,7 +169,7 @@ const Register = () => {
 
             <button
               // disabled={!validName || !validPwd || !validMatch ? true : false}
-              disabled={!validMatch ? true : false}
+              disabled={!validMatch || !pwd || !user || !email ? true : false}
             >
               Sign Up
             </button>
