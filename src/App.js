@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment } from "react";
+import { useAPI } from "./api/API";
+import "./index.css";
+import Register from "./components/register/Register";
+import Login from "./components/Login";
+import RequireAuth from "./components/RequiredAuth";
+import { Routes, Route } from "react-router-dom";
+import { Layout } from "./components/Layout";
+import { Home } from "./components/home/Home";
+import { Missing } from "./components/Missing";
+import { UsersList } from "./components/user-lists/UsersList";
+import { MainContainer } from "./styles/GlobalStyles";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MainContainer>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          {/* Unauthenticated routes */}
+          <Route path="login" element={<Login />} />
+          <Route path="register" element={<Register />} />
+
+          {/* Authenticated routes */}
+          <Route element={<RequireAuth />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/listUsers" element={<UsersList />} />
+          </Route>
+
+          {/* catch all */}
+          <Route path="*" element={<Missing />} />
+        </Route>
+      </Routes>
+    </MainContainer>
   );
-}
+};
 
 export default App;
